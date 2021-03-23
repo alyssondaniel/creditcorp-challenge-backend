@@ -6,21 +6,22 @@ module Api
       # GET /receivables
       def index
         @api_v1_receivables = Receivable.all
+        set_json
 
-        render json: @api_v1_receivables
+        render json: @api_v1_receivable_json
       end
 
       # GET /receivables/1
       def show
-        render json: @api_v1_receivable
+        render json: @api_v1_receivable_json
       end
 
       # POST /receivables
       def create
         @api_v1_receivable = Receivable.new(receivable_params)
-
         if @api_v1_receivable.save
-          render json: @api_v1_receivable, status: :created, location: @api_v1_receivable_url
+          set_json
+          render json: @api_v1_receivable_json, status: :created, location: @api_v1_receivable_url
         else
           render json: @api_v1_receivable.errors, status: :unprocessable_entity
         end
@@ -29,7 +30,8 @@ module Api
       # PATCH/PUT /receivables/1
       def update
         if @api_v1_receivable.update(receivable_params)
-          render json: @api_v1_receivable
+          set_json
+          render json: @api_v1_receivable_json
         else
           render json: @api_v1_receivable.errors, status: :unprocessable_entity
         end
@@ -44,11 +46,20 @@ module Api
         # Use callbacks to share common setup or constraints between actions.
         def set_receivable
           @api_v1_receivable = Receivable.find(params[:id])
+          set_json
         end
 
         # Only allow a list of trusted parameters through.
         def receivable_params
           params.require(:receivable).permit(:net_value, :expired_at, :key, :company_id)
+        end
+
+        def set_json
+          data = @api_v1_receivable || @api_v1_receivables
+          @api_v1_receivable_json = ReceivableSerializer.new(
+            data,
+            { params: { tax: params['tax'].to_f } }
+          ).to_h
         end
     end
   end

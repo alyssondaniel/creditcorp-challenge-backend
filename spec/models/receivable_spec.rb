@@ -19,7 +19,10 @@ RSpec.describe Receivable, type: :model do
       tx = 1.2
       days = (subject.expired_at - Date.today).to_i
       calc = subject.net_value - (subject.net_value * days * tx / (100 * Receivable::DAYS_AVG))
-      expect(subject.calc_anticipation(tx)).to eq(calc)
+
+      subject.calc_antecipation(tx)
+
+      expect(subject.calc_antecipation(1.2)).to eq(calc)
     end
   end
 end
