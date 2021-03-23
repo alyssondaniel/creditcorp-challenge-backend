@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+5.times do
+  company = FactoryBot.create :company
+  [20, 35, 50, 75].sample.times do
+    receivable = FactoryBot.create :receivable, company_id: company.id
+  end
+end
