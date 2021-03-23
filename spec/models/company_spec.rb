@@ -9,4 +9,8 @@ RSpec.describe Company, type: :model do
       it { should validate_uniqueness_of(:document).case_insensitive }
     end
   end
+
+  describe 'Associations' do
+    it { should have_many(:receivables).class_name('Receivable') }
+  end
 end

@@ -13,6 +13,8 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/api/v1/receivables", type: :request do
+  let(:company) { create(:company) }
+
   # This should return the minimal set of attributes required to create a valid
   # Receivable. As you add validations to Receivable, be sure to
   # adjust the attributes here as well.
@@ -20,7 +22,8 @@ RSpec.describe "/api/v1/receivables", type: :request do
     {
       net_value: Faker::Commerce.price,
       expired_at: Faker::Date.forward(days: 23),
-      key: Faker::Internet.uuid
+      key: Faker::Internet.uuid,
+      company_id: company.id
     }
   }
 
@@ -28,7 +31,8 @@ RSpec.describe "/api/v1/receivables", type: :request do
     {
       net_value: Faker::Commerce.price,
       expired_at: nil,
-      key: nil
+      key: nil,
+      company_id: company.id
     }
   }
 

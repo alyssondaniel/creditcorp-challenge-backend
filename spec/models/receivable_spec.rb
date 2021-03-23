@@ -7,4 +7,8 @@ RSpec.describe Receivable, type: :model do
     subject { create(:receivable) }
     it { should validate_uniqueness_of(:key).case_insensitive }
   end
+
+  describe 'Associations' do
+    it { should belong_to(:company).class_name('Company') }
+  end
 end

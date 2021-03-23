@@ -1,0 +1,5 @@
+class AddReferencesToReceivable < ActiveRecord::Migration[6.1]
+  def change
+    add_reference :receivables, :company, null: false, foreign_key: true
+  end
+end

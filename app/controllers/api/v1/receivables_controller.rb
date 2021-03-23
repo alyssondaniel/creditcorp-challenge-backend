@@ -48,7 +48,7 @@ module Api
 
         # Only allow a list of trusted parameters through.
         def receivable_params
-          params.require(:receivable).permit(:net_value, :expired_at, :key)
+          params.require(:receivable).permit(:net_value, :expired_at, :key, :company_id)
         end
     end
   end
