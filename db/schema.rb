@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_233236) do
+ActiveRecord::Schema.define(version: 2021_03_23_000641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2021_03_22_233236) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["document"], name: "index_companies_on_document", unique: true
+  end
+
+  create_table "receivables", force: :cascade do |t|
+    t.decimal "net_value", precision: 9, scale: 2, default: "0.0"
+    t.date "expired_at", null: false
+    t.string "key", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["key"], name: "index_receivables_on_key", unique: true
   end
 
 end
