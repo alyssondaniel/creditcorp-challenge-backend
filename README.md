@@ -1,24 +1,59 @@
-# README
+# Credicorp Challenge - backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Prerequisites
 
-Things you may want to cover:
+You will need installed on your system:
+- Ruby version 3.0.0 or greater.
+- Rails version 6.1.3 or greater.
+- PostgreSql version 13.2 or greater.
 
-* Ruby version
+### Configuration
+  
+  Edit file with username and passowrd in ``config/database.yml``
 
-* System dependencies
+### Database creation
+  ```
+  rails db:create
+  ```
 
-* Configuration
+### Database initialization
+```
+  rails db:migrate
+  rails db:seed
+  ```
+### How to run the test suite
+```
+  bundle exec rspec
+```
 
-* Database creation
+### Run
+```
+  rails s -b 0.0.0.0 -p 3001
+```
 
-* Database initialization
+### Routes
+##### Companies routes
++ *GET /api/v1/companies*
+  + Return all companies
+  + Query params: tax and company_id
++ *POST /api/v1/companies*
+  + Create a company
++ *GET /api/v1/companies/:id*
+  + Get a company by id
++ *PUT/PATCH /api/v1/companies/:id*
+  + Update a company by id
++ *DELETE /api/v1/companies/:id*
+  + Destroy a company by id
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##### Receivables routes
++ *GET /api/v1/receivables*
+  + Return all receivables
+  + Query params: tax and receivable_id
++ *POST /api/v1/receivables*
+  + Create a receivable
++ *GET /api/v1/receivables/:id*
+  + Get a receivable by id
++ *PUT/PATCH /api/v1/receivables/:id*
+  + Update a receivable by id
++ *DELETE /api/v1/receivables/:id*
+  + Destroy a receivable by id
