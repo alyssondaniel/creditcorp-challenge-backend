@@ -1,4 +1,4 @@
-# Credicorp Challenge - backend
+# Creditcorp Challenge - backend
 
 ### Prerequisites
 
