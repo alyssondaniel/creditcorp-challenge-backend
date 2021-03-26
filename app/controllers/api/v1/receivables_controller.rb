@@ -6,6 +6,10 @@ module Api
       # GET /receivables
       def index
         @api_v1_receivables = Receivable.all
+        if params[:company_id].present?
+          @api_v1_receivables = @api_v1_receivables.where(company_id: params[:company_id])
+        end
+
         set_json
 
         render json: @api_v1_receivable_json

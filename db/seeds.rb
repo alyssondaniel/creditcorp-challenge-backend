@@ -8,6 +8,6 @@
 5.times do
   company = FactoryBot.create :company
   [20, 35, 50, 75].sample.times do
-    receivable = FactoryBot.create :receivable, company_id: company.id
+    FactoryBot.create :receivable, company_id: company.id
   end
 end
