@@ -7,14 +7,20 @@ You will need installed on your system:
 - Rails version 6.1.3 or greater.
 - PostgreSql version 13.2 or greater.
 
+### Install gems
+
+  ```
+    bundle install
+  ```
+
 ### Configuration
   
   Edit file with username and passowrd in ``config/database.yml``
 
 ### Database creation
-  ```
+```
   rails db:create
-  ```
+```
 
 ### Database initialization
 ```
